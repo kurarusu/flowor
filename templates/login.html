@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<link rel="stylesheet" 　type="text/css" href="{% static 'css/reset.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
+{% endblock customcss %}
+
+{% block content %}
+
+<body>
+    <div class="wrapper">
+
+        <div class="container">
+            <h1>Welcome to <span>flowor.</span></h1>
+            {{ context }}
+            {{ welcome }}
+            <form class="form" method="POST">{% csrf_token %}
+                <input type="text" pattern="^[0-9A-Za-z]+$" placeholder="username" name='username' required>
+                <input type="password" placeholder="password" name='password' required>
+                <button type="submit">ログイン</button>
+                <div id="login"><a href="{% url 'signup' %}">アカウント作成はこちら</a></div>
+            </form>
+            <div id="copy">
+                <p class="copy">&copy;Hiroki Sotokawa. 2021- </p>
+            </div>
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+    </div>
+    <script type="text/javascript" src="{% static 'js/jquery2-1-3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+</body>
+{% endblock content %}

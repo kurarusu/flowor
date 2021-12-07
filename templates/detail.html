@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<link rel="stylesheet"　type="text/css" href="{% static 'css/reset.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}">
+{% endblock customcss %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<body>
+    <div class="l-wrapper_06">
+        <div class="card_06">
+        <img class="card-img_06" src="{{ object.snsimage.url }}"/>
+        <div class="card-content_06">
+            <p class="card-title_06">{{ object.title }}</p>
+            <p class="card-text_06">{{ object.content }}</p>
+        </div>
+        <div class="card-link_06">
+            <a href="#">{{ item.author }}</a>
+            <a href="{% url 'good' object.pk %}">いいね {{ object.good }}</a>
+            <a href="{% url 'read' object.pk %}">既読 {{object.read }}</a>
+        </div>
+        </div>
+    </div>
+    <a id="logout" href="{% url 'logout' %}">logout</a>
+    <div id="copy"><p>&copy;Hiroki Sotokawa.2021-</p></div>
+</body>    
+{% else %}
+please login
+{% endif %}
+{% endblock content %}
